@@ -37,9 +37,14 @@ html, body {
 
 @media (width <= 520px) {
   #topBanner {
+    border-radius: 6px;
+    width: auto;
     padding: 8px 12px;
     font-size: 14px;
     top: 12px;
+    left: 4px;
+    right: 4px;
+    transform: none;
   }
 }
 
@@ -54,6 +59,7 @@ html, body {
   font-family: "Press Start 2P", monospace;
   font-size: 10px;
   font-weight: 400;
+  line-height: 1.5;
   position: fixed;
   bottom: 12px;
   left: 50%;
@@ -63,9 +69,14 @@ html, body {
 
 @media (width <= 520px) {
   #bottomBanner {
+    border-radius: 6px;
+    width: auto;
     padding: 5px 8px;
     font-size: 9px;
     bottom: 8px;
+    left: 4px;
+    right: 4px;
+    transform: none;
   }
 }
 /*# sourceMappingURL=portfolio.c92073ef.css.map */
