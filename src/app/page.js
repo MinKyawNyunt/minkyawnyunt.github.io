@@ -17,6 +17,10 @@ function Robot({ targetPosition, onCollision }) {
   const collisionCooldown = useRef(0);
   const velocity = useRef(new THREE.Vector3());
   const previousPosition = useRef(new THREE.Vector3(0, 1, 0));
+  const [staticCollision, setStaticCollision] = useState(false);
+  const blinkCount = useRef(0);
+  const isBlinking = useRef(false);
+  const originalMaterials = useRef(new Map());
 
   useEffect(() => {
     if (gltf.scene) {
@@ -24,8 +28,17 @@ function Robot({ targetPosition, onCollision }) {
         if (child.isMesh) {
           child.castShadow = true;
           child.receiveShadow = true;
+          // Store original material properties
+          if (child.material) {
+            originalMaterials.current.set(child, {
+              emissive: child.material.emissive ? child.material.emissive.clone() : new THREE.Color(0x000000),
+              emissiveIntensity: child.material.emissiveIntensity || 0
+            });
+          }
         }
       });
+      // Mark the robot for collision detection
+      gltf.scene.userData.isRobot = true;
     }
   }, [gltf.scene]);
 
@@ -40,6 +53,58 @@ function Robot({ targetPosition, onCollision }) {
       setCurrentTarget(targetPosition);
     }
   }, [targetPosition]);
+
+  // Blink red effect when colliding with static objects
+  useEffect(() => {
+    if (staticCollision && !isBlinking.current) {
+      isBlinking.current = true;
+      blinkCount.current = 0;
+      
+      const interval = setInterval(() => {
+        if (gltf.scene) {
+          gltf.scene.traverse((child) => {
+            if (child.isMesh && child.material) {
+              const shouldBeRed = blinkCount.current % 2 === 0;
+              if (shouldBeRed) {
+                child.material.emissive = new THREE.Color(0xff0000);
+                child.material.emissiveIntensity = 1;
+              } else {
+                const original = originalMaterials.current.get(child);
+                if (original) {
+                  child.material.emissive = original.emissive.clone();
+                  child.material.emissiveIntensity = original.emissiveIntensity;
+                }
+              }
+              child.material.needsUpdate = true;
+            }
+          });
+        }
+        
+        blinkCount.current++;
+        
+        if (blinkCount.current >= 4) { // 2 blinks = 4 toggles
+          // Reset to original
+          if (gltf.scene) {
+            gltf.scene.traverse((child) => {
+              if (child.isMesh && child.material) {
+                const original = originalMaterials.current.get(child);
+                if (original) {
+                  child.material.emissive = original.emissive.clone();
+                  child.material.emissiveIntensity = original.emissiveIntensity;
+                  child.material.needsUpdate = true;
+                }
+              }
+            });
+          }
+          clearInterval(interval);
+          isBlinking.current = false;
+          setStaticCollision(false);
+        }
+      }, 200); // Blink every 200ms
+
+      return () => clearInterval(interval);
+    }
+  }, [staticCollision, gltf.scene]);
 
   useFrame((state, delta) => {
     // Handle collision cooldown
@@ -85,6 +150,9 @@ function Robot({ targetPosition, onCollision }) {
             const staticBox = new THREE.Box3().setFromObject(child);
             if (robotBox.intersectsBox(staticBox)) {
               hasCollision = true;
+              if (!isBlinking.current) {
+                setStaticCollision(true);
+              }
             }
           }
         });
@@ -482,7 +550,7 @@ export default function Home() {
   const [targetPosition, setTargetPosition] = useState(null);
   const [boxHits, setBoxHits] = useState({});
   const [clickedBox, setClickedBox] = useState(true);
-  const [displayedText, setDisplayedText] = useState('Hi Traveler! My name is MIN. The Creator of this website. PRESS ON GROUND to MOVE robot. SCROLL or DRUG to move camera. Hane fun!');
+  const [displayedText, setDisplayedText] = useState('Hi Traveler! My name is MIN. The Creator of this website. PRESS ON GROUND to MOVE robot. SCROLL or DRUG to move camera. Have fun!');
   const [isTyping, setIsTyping] = useState(false);
 
   const handleGroundClick = (point) => {
