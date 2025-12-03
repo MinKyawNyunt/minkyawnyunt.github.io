@@ -4,8 +4,6 @@ const nextConfig = {
   reactCompiler: true,
   output: 'export',
   distDir: 'docs',
-  basePath: process.env.NODE_ENV === 'production' ? '/profile' : '',
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/profile' : '',
   images: {
     unoptimized: true,
   },
