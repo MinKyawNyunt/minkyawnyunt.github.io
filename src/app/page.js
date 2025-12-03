@@ -482,7 +482,7 @@ export default function Home() {
   const [targetPosition, setTargetPosition] = useState(null);
   const [boxHits, setBoxHits] = useState({});
   const [clickedBox, setClickedBox] = useState(true);
-  const [displayedText, setDisplayedText] = useState('Hi Traveler! My name is MIN. The Creator of this website. PRESS ON GROUND to MOVE robot. SCROLL or DRUG to move camera. Hanve fun!');
+  const [displayedText, setDisplayedText] = useState('Hi Traveler! My name is MIN. The Creator of this website. PRESS ON GROUND to MOVE robot. SCROLL or DRUG to move camera. Hane fun!');
   const [isTyping, setIsTyping] = useState(false);
 
   const handleGroundClick = (point) => {
@@ -599,7 +599,7 @@ export default function Home() {
             velocity={boxHits['box2']?.velocity}
             key="box2"
             texture_url="/img/mysql.png"
-            onClick={(boxId, pos) => handleBoxClick('Have experience working with big data, handling millions of records using SQL, and is also skilled in NoSQL databases.', pos)}
+            onClick={(boxId, pos) => handleBoxClick('Have experience working with big data, handling millions of records using SQL, and also skilled in NoSQL databases.', pos)}
           />
 
           <BoxComponent
