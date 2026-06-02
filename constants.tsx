@@ -190,21 +190,21 @@ export const EXPERIENCES: Experience[] = [
 export const EDUCATION: Education[] = [
   {
     institution: 'NCC Education - UK',
-    degree: 'Level 5 Diploma in Computing (L5DC)',
+    degree: 'LEVEL 5 DIPLOMA IN COMPUTING (L5DC)',
     period: '2018 - 2019',
     // description: 'Specialized in software engineering and database management systems. Developed foundational skills in algorithms, data structures, and system design.',
     // achievements: ['Dean\'s List', 'Software Development Club Lead']
   },
   {
     institution: 'Lashio University',
-    degree: 'Bachelor of Arts in Psychology',
+    degree: 'BACHELOR OF ARTS IN PSYCHOLOGY',
     period: '2016 - 2019',
     // description: 'Specialized in software engineering and database management systems. Developed foundational skills in algorithms, data structures, and system design.',
     // achievements: ['Dean\'s List', 'Software Development Club Lead']
   },
   {
     institution: 'Yangon University of Distance Education',
-    degree: 'Diploma in Web Development',
+    degree: 'DIPLOMA IN WEB DEVELOPMENT',
     period: '2016 - 2017',
     // description: 'Specialized in software engineering and database management systems. Developed foundational skills in algorithms, data structures, and system design.',
     // achievements: ['Dean\'s List', 'Software Development Club Lead']
