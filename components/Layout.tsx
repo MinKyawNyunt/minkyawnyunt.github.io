@@ -65,11 +65,11 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
         <div className="md:hidden fixed inset-0 z-50 bg-black/95 pt-20 px-6 flex flex-col gap-6 font-orbitron">
            <button onClick={() => setIsMenuOpen(false)} className="absolute top-4 right-4 text-cyan-400"><X /></button>
            <Link onClick={() => setIsMenuOpen(false)} to="/" className="text-2xl text-gray-300">HOME</Link>
-           <Link onClick={() => setIsMenuOpen(false)} to="/projects" className="text-2xl text-gray-300">MISSION</Link>
+           <Link onClick={() => setIsMenuOpen(false)} to="/projects" className="text-2xl text-gray-300">MISSIONS</Link>
            <Link onClick={() => setIsMenuOpen(false)} to="/skills" className="text-2xl text-gray-300">CORE</Link>
            <Link onClick={() => setIsMenuOpen(false)} to="/experience" className="text-2xl text-gray-300">HISTORY</Link>
-           <Link onClick={() => setIsMenuOpen(false)} to="/education" className="text-2xl text-gray-300">DATA BANKS</Link>
-           <Link onClick={() => setIsMenuOpen(false)} to="/ai" className="text-2xl text-cyan-400">NEURAL INTERFACE</Link>
+           <Link onClick={() => setIsMenuOpen(false)} to="/education" className="text-2xl text-gray-300">KNOWLEDGE</Link>
+           <Link onClick={() => setIsMenuOpen(false)} to="/ai" className="text-2xl text-cyan-400">AI ASSISTANT</Link>
         </div>
       )}
 

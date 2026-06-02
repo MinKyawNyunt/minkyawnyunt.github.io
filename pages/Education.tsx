@@ -11,7 +11,7 @@ export const EducationPage = () => {
           <GraduationCap className="w-8 h-8 text-pink-400" />
         </div>
         <div>
-          <h2 className="text-4xl md:text-6xl font-orbitron font-bold text-white uppercase">Knowledge Bank</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-6xl font-orbitron font-bold text-white uppercase">Knowledge Bank</h2>
           <p className="font-mono text-pink-400 mt-2">EDUCATIONAL ARCHIVES</p>
         </div>
       </div>
