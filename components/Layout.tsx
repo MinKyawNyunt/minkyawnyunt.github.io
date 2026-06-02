@@ -49,8 +49,8 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
           </div>
 
           <div className="hidden md:flex items-center gap-4 border-l border-white/10 pl-4">
-            <a href="#" className="text-gray-400 hover:text-white transition-colors"><Github className="w-5 h-5" /></a>
-            <a href="#" className="text-gray-400 hover:text-white transition-colors"><Linkedin className="w-5 h-5" /></a>
+            <a href="https://github.com/MinKyawNyunt" target="_blank" className="text-gray-400 hover:text-white transition-colors"><Github className="w-5 h-5" /></a>
+            <a href="https://www.linkedin.com/in/min-kyaw-nyunt/"   target="_blank" className="text-gray-400 hover:text-white transition-colors"><Linkedin className="w-5 h-5" /></a>
           </div>
 
           {/* Mobile Toggle */}
