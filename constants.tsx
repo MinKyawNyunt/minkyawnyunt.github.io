@@ -160,28 +160,28 @@ export const SKILLS: Skill[] = [
 export const EXPERIENCES: Experience[] = [
   {
     company: 'HANA MICROFINANCE',
-    role: 'Solution Architect / Senior Developer',
+    role: 'SOLUTION ARCHITECT / SENIOR DEVELOPER',
     period: 'Jul 2021 - Oct 2025',
     description: 'Designed system architecture supporting 300k+ users, reducing processing time by 35%. Translated business and regulatory requirements into scalable technical solutions. Defined technology stack, coding standards, and system integration strategies.'
   },
 
   {
     company: 'SECURELINK',
-    role: 'Team Leader',
+    role: 'TEAM LEADER',
     period: 'May 2019 - May 2021',
     description: 'Led a cross-functional development team delivering large-scale Government ERP systems used nationwide. Coordinated project planning, task allocation, and sprint execution to ensure on-time delivery. Acted as the primary technical point of contact between government stakeholders and the development team.'
   },
 
   {
     company: 'IRRAHUB',
-    role: 'Developer',
+    role: 'DEVELOPER',
     period: 'Feb 2017 - Apr 2018',
     description: 'Implemented backend modules, database schemas, and business logic based on project requirements. Assisted in system testing, bug fixing, and performance optimization. Participated in deployment support and post-release maintenance for production systems.'
   },
 
   {
     company: 'EMPOWER',
-    role: 'Data Operator',
+    role: 'DATA OPERATOR',
     period: 'May 2014 - May 2016',
     description: 'Collected quantative surveys for drought villages in Myanmar. Data Entry using SPSS, Microsoft Word, and Excel.'
   },

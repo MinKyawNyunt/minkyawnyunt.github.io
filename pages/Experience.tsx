@@ -25,7 +25,7 @@ export const ExperiencePage = () => {
             
             <div className="p-8 border border-white/5 bg-white/5 hover:border-cyan-500/20 transition-all rounded-lg backdrop-blur-md group">
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-4">
-                <h3 className="text-2xl font-orbitron font-bold text-white group-hover:text-cyan-400 transition-colors">
+                <h3 className="text-2xl font-rajdhani font-bold text-white group-hover:text-cyan-400 transition-colors tracking-widest">
                   {exp.role}
                 </h3>
                 <span className="font-mono text-cyan-500 bg-cyan-500/10 px-3 py-1 text-sm border border-cyan-500/30">
