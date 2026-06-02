@@ -1,0 +1,8 @@
+
+{
+  "name": "NEURAL-ARCHIVE: Cyberpunk Portfolio",
+  "description": "A futuristic, high-fidelity personal portfolio with a cyberpunk aesthetic, featuring a Gemini-powered neural interface for interactive inquiries.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
