@@ -38,6 +38,9 @@ export const NeuralInterface = () => {
 
       const res = await fetch('https://n8n.safenetonlinestore.com/webhook/ai-assistant', {
         method: 'POST',
+        headers: {
+          'ai-assistant-key': process.env.API_KEY ?? '',
+        },
         body: formData,
       });
 

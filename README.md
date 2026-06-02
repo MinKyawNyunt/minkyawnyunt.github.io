@@ -1,20 +1,58 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Cyberpunk Portfolio
 
-# Run and deploy your AI Studio app
+A cyberpunk-themed personal portfolio built with React, TypeScript, and Vite. Features an AI-powered chat assistant (Neural Interface) powered by Google Gemini.
 
-This contains everything you need to run your app locally.
+## Features
 
-View your app in AI Studio: https://ai.studio/apps/temp/1
+- **Home** — Animated particle background with bio and quick links
+- **Projects** — Showcase of personal and professional projects
+- **Skills** — Technology stack and proficiency overview
+- **Experience** — Work history and career timeline
+- **Education** — Academic background
+- **Neural Interface** — AI chat assistant (Min's personal AI, powered by Gemini)
 
-## Run Locally
+## Tech Stack
 
-**Prerequisites:**  Node.js
+- **React 19** + **TypeScript**
+- **Vite** — build tool and dev server
+- **React Router v7** — client-side routing (HashRouter)
+- **tsParticles** — interactive particle animations
+- **Lucide React** — icon library
+- **Google Gemini** (`@google/genai`) — AI chat backend
 
+## Getting Started
+
+**Prerequisites:** Node.js
 
 1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+   ```bash
+   npm install
+   ```
+2. Set your Gemini API key in `.env.local`:
+   ```
+   API_KEY=your_api_key_here
+   ```
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+## Scripts
+
+| Command | Description |
+|---|---|
+| `npm run dev` | Start local dev server |
+| `npm run build` | Production build |
+| `npm run preview` | Preview production build |
+
+## Project Structure
+
+```
+├── components/       # Shared UI components (Layout, CyberCard)
+├── pages/            # Route-level page components
+├── services/         # Gemini API service
+├── assets/images/    # Project and company images
+├── constants.tsx     # Bio, projects, skills, experience data
+├── types.ts          # Shared TypeScript types
+└── App.tsx           # Router and layout setup
+```
