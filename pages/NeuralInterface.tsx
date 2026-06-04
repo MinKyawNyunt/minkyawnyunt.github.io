@@ -23,7 +23,6 @@ export const NeuralInterface = () => {
   }, [messages, isLoading]);
 
   const handleSubmit = async (e: React.FormEvent) => {
-    console.log("tests", process.env.API_KEY)
     e.preventDefault();
     if (!input.trim() || isLoading) return;
 
@@ -51,7 +50,6 @@ export const NeuralInterface = () => {
       const botMsg: string = data.output ?? data.text ?? data.message ?? data.response ?? JSON.stringify(data);
       setMessages(prev => [...prev, { role: 'model', text: botMsg }]);
     } catch (err) {
-      console.log(process.env.API_KEY, err)
       setMessages(prev => [...prev, { role: 'model', text: `CONNECTION ERROR: ${(err as Error).message}` }]);
     } finally {
       setIsLoading(false);
