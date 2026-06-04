@@ -23,6 +23,7 @@ export const NeuralInterface = () => {
   }, [messages, isLoading]);
 
   const handleSubmit = async (e: React.FormEvent) => {
+    console.log(process.env.API_KEY)
     e.preventDefault();
     if (!input.trim() || isLoading) return;
 
