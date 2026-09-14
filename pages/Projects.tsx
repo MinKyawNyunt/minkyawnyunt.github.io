@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { ExternalLink, Github, Box } from 'lucide-react';
-import { PROJECTS } from '../constants';
+import { PROJECT_GROUPS, PROJECTS } from '../constants';
 import { CyberCard } from '../components/CyberCard';
 
 export const Projects = () => {
@@ -15,54 +15,64 @@ export const Projects = () => {
         <Box className="w-12 h-12 text-cyan-500/20" />
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {PROJECTS.map((project) => (
-          <CyberCard key={project.id} title={`OP-${project.id}`} link={project.link}> 
-            <div className="flex flex-col h-full min-h-[420px]">
-              <div>
-                <div className="relative h-48 mb-4 overflow-hidden group bg-white flex items-center justify-center">
-                  <img
-                    src={project.imageUrl}
-                    alt={project.title}
-                    className="w-full h-full object-contain bg-white p-2 grayscale group-hover:grayscale-0 transition-all duration-500 scale-100 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-cyan-500/20 opacity-0 group-hover:opacity-100 transition-opacity" />
+      {PROJECT_GROUPS.map((group) => (
+        <div key={group.companyName} className="mb-16">
+          <div className="mb-8 flex items-center gap-4">
+            <h3 className="text-xl md:text-2xl font-orbitron font-bold text-cyan-400 uppercase tracking-wider">{group.companyName}</h3>
+            <div className="flex-1 h-px bg-cyan-500/20" />
+            <span className="font-mono text-xs text-gray-500">{group.projects.length} OPS</span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {group.projects.map((project) => (
+              <CyberCard key={project.id} title={`OP-${project.id}`} link={project.link}>
+                <div className="flex flex-col h-full min-h-[420px]">
+                  <div>
+                    <div className="relative h-48 mb-4 overflow-hidden group bg-white flex items-center justify-center">
+                      <img
+                        src={project.imageUrl}
+                        alt={project.title}
+                        className="w-full h-full object-contain bg-white p-2 grayscale group-hover:grayscale-0 transition-all duration-500 scale-100 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-cyan-500/20 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </div>
+                    <h3 className="text-2xl font-orbitron font-bold text-white mb-2">{project.title}</h3>
+                    <p className="text-gray-400 text-sm mb-4 line-clamp-5 font-rajdhani">{project.description}</p>
+                  </div>
+                  <div className="mt-auto">
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {project.tags.map(tag => (
+                        <span key={tag} className="text-[10px] font-mono px-2 py-0.5 bg-white/5 border border-white/10 text-gray-300">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="flex items-center gap-4 border-t border-white/10 pt-4">
+                      {project.link ? (
+                        <a
+                          href={project.link}
+                          className="flex items-center gap-2 text-xs font-orbitron text-cyan-400 hover:text-white transition-colors"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <ExternalLink className="w-3 h-3" /> LINK
+                        </a>
+                      ) : (
+                        <span
+                          className="flex items-center gap-2 text-xs font-orbitron text-gray-500 cursor-not-allowed opacity-50"
+                          title="No deployment link available"
+                        >
+                          <ExternalLink className="w-3 h-3" /> LINK
+                        </span>
+                      )}
+                    </div>
+                  </div>
                 </div>
-                <h3 className="text-2xl font-orbitron font-bold text-white mb-2">{project.title}</h3>
-                <p className="text-gray-400 text-sm mb-4 line-clamp-5 font-rajdhani">{project.description}</p>
-              </div>
-              <div className="mt-auto">
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.tags.map(tag => (
-                    <span key={tag} className="text-[10px] font-mono px-2 py-0.5 bg-white/5 border border-white/10 text-gray-300">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <div className="flex items-center gap-4 border-t border-white/10 pt-4">
-                  {project.link ? (
-                    <a
-                      href={project.link}
-                      className="flex items-center gap-2 text-xs font-orbitron text-cyan-400 hover:text-white transition-colors"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <ExternalLink className="w-3 h-3" /> LINK
-                    </a>
-                  ) : (
-                    <span
-                      className="flex items-center gap-2 text-xs font-orbitron text-gray-500 cursor-not-allowed opacity-50"
-                      title="No deployment link available"
-                    >
-                      <ExternalLink className="w-3 h-3" /> LINK
-                    </span>
-                  )}
-                </div>
-              </div>
-            </div>
-          </CyberCard>
-        ))}
-      </div>
+              </CyberCard>
+            ))}
+          </div>
+        </div>
+      ))}
     </div>
   );
 };
