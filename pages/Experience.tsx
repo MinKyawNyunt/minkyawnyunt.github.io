@@ -1,47 +1,101 @@
-
 import React from 'react';
+import { Building2, CircleDot } from 'lucide-react';
 import { EXPERIENCES } from '../constants';
-import { History } from 'lucide-react';
+import { Reveal } from '../components/Reveal';
+import { SectionShell } from '../components/SectionShell';
 
-export const ExperiencePage = () => {
+const ACCENTS = ['#f59e0b', '#ec4899', '#22d3ee', '#8b5cf6'];
+
+export const ExperiencePage: React.FC = () => {
   return (
-    <div className="max-w-7xl mx-auto px-4 py-12 md:py-24">
-      <div className="mb-12 flex items-center gap-6">
-        <div className="p-4 bg-cyan-500/10 border border-cyan-500/30">
-          <History className="w-8 h-8 text-cyan-400" />
-        </div>
-        <div>
-          <h2 className="text-4xl md:text-6xl font-orbitron font-bold text-white uppercase">History Log</h2>
-          <p className="font-mono text-cyan-400 mt-2">CAREER TIMELINE</p>
-        </div>
-      </div>
+    <SectionShell
+      id="experience"
+      kicker="CAREER TIMELINE // 2014 — PRESENT"
+      title="Career"
+      accentWord="Timeline"
+      description="A decade of building and leading — from data operations to solution architecture, with teams and systems spanning fintech, government and enterprise."
+    >
+      <div className="relative">
+        <span className="absolute bottom-2 left-[11px] top-2 w-px bg-gradient-to-b from-amber-400/70 via-pink-500/30 to-transparent md:left-[15px]" />
 
-      <div className="space-y-12">
-        {EXPERIENCES.map((exp, i) => (
-          <div key={i} className="relative pl-12 before:content-[''] before:absolute before:left-4 before:top-2 before:bottom-[-48px] before:w-[1px] before:bg-gradient-to-b before:from-cyan-500 before:to-transparent last:before:hidden">
-            <div className="absolute left-0 top-1 w-8 h-8 rounded-full border border-cyan-500 bg-black flex items-center justify-center z-10 shadow-[0_0_10px_#00f3ff]">
-              <div className="w-2 h-2 bg-cyan-400" />
-            </div>
-            
-            <div className="p-8 border border-white/5 bg-white/5 hover:border-cyan-500/20 transition-all rounded-lg backdrop-blur-md group">
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-4">
-                <h3 className="text-2xl font-rajdhani font-bold text-white group-hover:text-cyan-400 transition-colors tracking-widest">
-                  {exp.role}
-                </h3>
-                <span className="font-mono text-cyan-500 bg-cyan-500/10 px-3 py-1 text-sm border border-cyan-500/30">
-                  {exp.period}
+        {EXPERIENCES.map((experience, index) => {
+          const accent = ACCENTS[index % ACCENTS.length];
+
+          return (
+            <Reveal key={`${experience.company}-${experience.period}`} delay={index * 70}>
+              <div className="relative pb-10 pl-10 last:pb-0 md:pl-16">
+                <span
+                  className="absolute left-0 top-1 flex h-6 w-6 items-center justify-center border bg-[#05060c] md:h-8 md:w-8"
+                  style={{
+                    borderColor: `${accent}88`,
+                    boxShadow: `0 0 18px ${accent}33`,
+                  }}
+                >
+                  <span
+                    className="h-1.5 w-1.5 rounded-full"
+                    style={{ backgroundColor: accent, boxShadow: `0 0 8px ${accent}` }}
+                  />
                 </span>
+
+                <div className="group relative overflow-hidden border border-white/[0.08] bg-[#070a12]/80 p-6 transition-all duration-300 hover:border-white/20 hover:bg-[#0b0f1a]/90 md:p-8">
+                  <span className="pointer-events-none absolute -right-2 -top-6 select-none font-orbitron text-[7rem] font-bold leading-none text-white/[0.025]">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <span
+                    className="pointer-events-none absolute bottom-0 left-0 top-0 w-px opacity-60 transition-opacity group-hover:opacity-100"
+                    style={{ backgroundColor: accent }}
+                  />
+
+                  <div className="relative z-10">
+                    <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+                      <div>
+                        {index === 0 && (
+                          <span
+                            className="mb-2 inline-flex items-center gap-1.5 border px-2 py-0.5 font-mono text-[8px] tracking-[0.2em]"
+                            style={{
+                              borderColor: `${accent}55`,
+                              color: accent,
+                              backgroundColor: `${accent}10`,
+                            }}
+                          >
+                            <CircleDot className="h-2.5 w-2.5" />
+                            LATEST ROLE
+                          </span>
+                        )}
+                        <h3 className="font-orbitron text-lg font-bold leading-snug text-white md:text-xl">
+                          {experience.role}
+                        </h3>
+                        <p
+                          className="mt-2 flex items-center gap-2 font-rajdhani text-sm font-semibold uppercase tracking-[0.18em]"
+                          style={{ color: accent }}
+                        >
+                          <Building2 className="h-3.5 w-3.5" />
+                          {experience.company}
+                        </p>
+                      </div>
+
+                      <span
+                        className="shrink-0 self-start border px-3 py-1 font-mono text-[10px] tracking-[0.12em]"
+                        style={{
+                          borderColor: `${accent}44`,
+                          backgroundColor: `${accent}0d`,
+                          color: accent,
+                        }}
+                      >
+                        {experience.period}
+                      </span>
+                    </div>
+
+                    <p className="mt-5 max-w-3xl font-rajdhani text-[15px] leading-relaxed text-gray-400">
+                      {experience.description}
+                    </p>
+                  </div>
+                </div>
               </div>
-              
-              <h4 className="text-pink-400 font-rajdhani text-lg font-bold mb-4 tracking-widest">{exp.company}</h4>
-              
-              <p className="text-gray-400 leading-relaxed font-rajdhani max-w-3xl">
-                {exp.description}
-              </p>
-            </div>
-          </div>
-        ))}
+            </Reveal>
+          );
+        })}
       </div>
-    </div>
+    </SectionShell>
   );
 };

@@ -1,73 +1,109 @@
-
 import React from 'react';
+import { Award, GraduationCap } from 'lucide-react';
 import { EDUCATION } from '../constants';
-import { GraduationCap } from 'lucide-react';
+import { CyberCard } from '../components/CyberCard';
+import { Reveal } from '../components/Reveal';
+import { SectionShell } from '../components/SectionShell';
 
-export const EducationPage = () => {
+const ACCENTS = ['#ec4899', '#8b5cf6', '#22d3ee'];
+
+export const EducationPage: React.FC = () => {
   return (
-    <div className="max-w-7xl mx-auto px-4 py-12 md:py-24">
-      <div className="mb-12 flex items-center gap-6">
-        <div className="p-4 bg-pink-500/10 border border-pink-500/30">
-          <GraduationCap className="w-8 h-8 text-pink-400" />
-        </div>
-        <div>
-          <h2 className="text-2xl sm:text-3xl md:text-6xl font-orbitron font-bold text-white uppercase">Knowledge Bank</h2>
-          <p className="font-mono text-pink-400 mt-2">EDUCATIONAL ARCHIVES</p>
-        </div>
-      </div>
+    <SectionShell
+      id="education"
+      kicker="EDUCATIONAL ARCHIVES // 03 RECORDS"
+      title="Knowledge"
+      accentWord="Bank"
+      description="Formal training in computing, psychology and web development — a foundation that blends technical depth with an understanding of how people actually use software."
+    >
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+        {EDUCATION.map((education, index) => {
+          const accent = ACCENTS[index % ACCENTS.length];
 
-      <div className="space-y-12">
-        {EDUCATION.map((edu, i) => (
-          <div key={i} className="relative pl-12 before:content-[''] before:absolute before:left-4 before:top-2 before:bottom-[-48px] before:w-[1px] before:bg-gradient-to-b before:from-pink-500 before:to-transparent last:before:hidden">
-            <div className="absolute left-0 top-1 w-8 h-8 rounded-full border border-pink-500 bg-black flex items-center justify-center z-10 shadow-[0_0_10px_#ec4899]">
-              <div className="w-2 h-2 bg-pink-400" />
-            </div>
-            
-            <div className="p-8 border border-white/5 bg-white/5 hover:border-pink-500/20 transition-all rounded-lg backdrop-blur-md group">
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-4">
-                <h3 className="text-2xl font-rajdhani font-bold text-white group-hover:text-pink-400 transition-colors tracking-widest">
-                  {edu.degree}
-                </h3>
-                <span className="font-mono text-pink-500 bg-pink-500/10 px-3 py-1 text-sm border border-pink-500/30">
-                  {edu.period}
-                </span>
-              </div>
-              
-              <h4 className="text-cyan-400 font-rajdhani text-lg font-bold mb-4 tracking-widest">{edu.institution}</h4>
-              
-              {edu.description && (
-                <p className="text-gray-400 leading-relaxed font-rajdhani max-w-3xl mb-4">
-                  {edu.description}
-                </p>
-              )}
-
-              {edu.achievements && edu.achievements.length > 0 && (
-                <div className="mt-4 pt-4 border-t border-white/10">
-                  <h5 className="font-mono text-xs text-pink-400 mb-3 uppercase tracking-wider">// Achievements Unlocked</h5>
-                  <div className="flex flex-wrap gap-2">
-                    {edu.achievements.map((achievement, idx) => (
-                      <span 
-                        key={idx}
-                        className="px-3 py-1 text-sm font-rajdhani bg-pink-500/10 text-pink-300 border border-pink-500/20 rounded"
-                      >
-                        {achievement}
-                      </span>
-                    ))}
+          return (
+            <Reveal key={`${education.institution}-${education.degree}`} delay={index * 90} className="h-full">
+              <CyberCard
+                title={`CREDENTIAL-${String(index + 1).padStart(2, '0')}`}
+                accent={accent}
+                className="h-full"
+              >
+                <article className="flex h-full min-h-[300px] flex-col">
+                  <div className="flex items-start justify-between">
+                    <span
+                      className="flex h-11 w-11 items-center justify-center border"
+                      style={{
+                        borderColor: `${accent}44`,
+                        backgroundColor: `${accent}0f`,
+                        color: accent,
+                      }}
+                    >
+                      <GraduationCap className="h-5 w-5" />
+                    </span>
+                    <span className="font-orbitron text-4xl font-bold text-white/[0.06]">
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
                   </div>
-                </div>
-              )}
-            </div>
-          </div>
-        ))}
+
+                  <h3 className="mt-6 font-orbitron text-base font-bold uppercase leading-snug tracking-wide text-white">
+                    {education.degree}
+                  </h3>
+
+                  <p
+                    className="mt-3 font-rajdhani text-base font-semibold tracking-[0.08em]"
+                    style={{ color: accent }}
+                  >
+                    {education.institution}
+                  </p>
+
+                  <span
+                    className="mt-4 inline-flex w-fit border px-2.5 py-0.5 font-mono text-[9px] tracking-[0.16em]"
+                    style={{
+                      borderColor: `${accent}40`,
+                      backgroundColor: `${accent}0d`,
+                      color: accent,
+                    }}
+                  >
+                    {education.period}
+                  </span>
+
+                  {education.description && (
+                    <p className="mt-4 font-rajdhani text-sm leading-relaxed text-gray-400">
+                      {education.description}
+                    </p>
+                  )}
+
+                  {education.achievements && education.achievements.length > 0 && (
+                    <div className="mt-4 flex flex-wrap gap-2 border-t border-white/[0.08] pt-4">
+                      {education.achievements.map((achievement) => (
+                        <span
+                          key={achievement}
+                          className="border border-white/[0.08] bg-white/[0.03] px-2 py-0.5 font-mono text-[9px] text-gray-400"
+                        >
+                          {achievement}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+
+                  <div className="mt-auto flex items-center gap-2 border-t border-white/[0.08] pt-4">
+                    <Award className="h-3.5 w-3.5" style={{ color: accent }} />
+                    <span className="font-mono text-[9px] tracking-[0.2em] text-gray-500">
+                      ARCHIVED // VERIFIED
+                    </span>
+                  </div>
+                </article>
+              </CyberCard>
+            </Reveal>
+          );
+        })}
       </div>
 
-      {/* <div className="mt-12 p-8 border border-cyan-500/20 bg-cyan-500/5 backdrop-blur-md rounded-lg">
-        <h4 className="font-orbitron text-cyan-400 mb-2">// SYSTEM LOG</h4>
-        <p className="text-gray-400 font-rajdhani leading-relaxed">
-          Knowledge acquisition protocols complete. Neural pathways optimized through structured learning modules.
-          Continuous education subroutines remain active for lifetime enhancement cycles.
+      <Reveal delay={140}>
+        <p className="mt-8 max-w-2xl border-l border-fuchsia-500/40 pl-5 font-rajdhani text-base leading-relaxed text-gray-500">
+          Education never stops at the certificate. Every production system, failed deploy
+          and late-night refactor has been part of the curriculum.
         </p>
-      </div> */}
-    </div>
+      </Reveal>
+    </SectionShell>
   );
 };

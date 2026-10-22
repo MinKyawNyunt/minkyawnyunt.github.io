@@ -1,28 +1,35 @@
-
 import React from 'react';
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { Layout } from './components/Layout';
-import { Home } from './pages/Home';
-import { Projects } from './pages/Projects';
-import { Skills } from './pages/Skills';
-import { ExperiencePage } from './pages/Experience';
-import { NeuralInterface } from './pages/NeuralInterface';
-import { EducationPage } from './pages/Education';
+import { ScrollPortfolio } from './pages/ScrollPortfolio';
 
 const App: React.FC = () => {
+  /*
+   * The page is a single scroll experience, so restore deep links such as
+   * /#projects after React has mounted the sections.
+   */
+  React.useEffect(() => {
+    const id = window.location.hash.replace('#', '');
+    if (!id) return;
+
+    let frame = 0;
+    frame = requestAnimationFrame(() => {
+      const target = document.getElementById(id);
+      if (!target) return;
+
+      const html = document.documentElement;
+      const previousBehavior = html.style.scrollBehavior;
+      html.style.scrollBehavior = 'auto';
+      target.scrollIntoView({ block: 'start' });
+      html.style.scrollBehavior = previousBehavior;
+    });
+
+    return () => cancelAnimationFrame(frame);
+  }, []);
+
   return (
-    <Router>
-      <Layout>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/skills" element={<Skills />} />
-          <Route path="/experience" element={<ExperiencePage />} />
-          <Route path="/education" element={<EducationPage />} />
-          <Route path="/ai" element={<NeuralInterface />} />
-        </Routes>
-      </Layout>
-    </Router>
+    <Layout>
+      <ScrollPortfolio />
+    </Layout>
   );
 };
 

@@ -1,19 +1,19 @@
 
 import React from 'react';
 import { Project, ProjectGroup, Skill, Experience, Education } from './types';
-import fdaImage from './assets/images/fda.jpeg';
-import mohtImage from './assets/images/moht.png';
-import ucsbImage from './assets/images/ucsb.webp';
-import moaliImg from './assets/images/moali.png';
-import disiImg from './assets/images/disi.png';
-import hanaImg from './assets/images/hana.jpg';
-import sayaImg from './assets/images/saya.png';
-import grandeWhiskyImg from './assets/images/grande-whisky.webp';
-import boaImg from './assets/images/boa_logo.png';
-import roseHillImg from './assets/images/rose-hill.png';
-import asahiImg from './assets/images/asahi.png';
-import cryptoSwapImg from './assets/images/crypto-swap.png';
-import threeDWebsiteImg from './assets/images/3d-website.png';
+import fdaImage from './assets/images/optimized/fda.webp';
+import mohtImage from './assets/images/optimized/moht.webp';
+import ucsbImage from './assets/images/optimized/ucsb.webp';
+import moaliImg from './assets/images/optimized/moali.webp';
+import disiImg from './assets/images/optimized/disi.webp';
+import hanaImg from './assets/images/optimized/hana.webp';
+import sayaImg from './assets/images/optimized/saya.webp';
+import grandeWhiskyImg from './assets/images/optimized/grande-whisky.webp';
+import boaImg from './assets/images/optimized/boa_logo.webp';
+import roseHillImg from './assets/images/optimized/rose-hill.webp';
+import asahiImg from './assets/images/optimized/asahi.webp';
+import cryptoSwapImg from './assets/images/optimized/crypto-swap.webp';
+import threeDWebsiteImg from './assets/images/optimized/3d-website.webp';
 
 export const BIO_NAME = "MIN KYAW NYUNT";
 export const BIO_TAGLINE = "Full-Stack Developer";
