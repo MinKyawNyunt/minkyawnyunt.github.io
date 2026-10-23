@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUpRight, Box, ExternalLink } from 'lucide-react';
+import { ArrowUpRight, Box, ExternalLink, Lock, ShieldCheck } from 'lucide-react';
 import { PROJECT_GROUPS, PROJECTS } from '../constants';
 import { CyberCard } from '../components/CyberCard';
 import { Reveal } from '../components/Reveal';
@@ -32,6 +32,12 @@ export const Projects: React.FC = () => {
                 <h3 className="font-orbitron text-lg font-bold uppercase tracking-[0.08em] text-white md:text-xl">
                   {group.companyName}
                 </h3>
+                {group.confidential && (
+                  <span className="inline-flex items-center gap-1.5 border border-white/10 bg-white/[0.03] px-2 py-1 font-mono text-[8px] tracking-[0.18em] text-gray-400">
+                    <Lock className="h-2.5 w-2.5" />
+                    CLIENT CLASSIFIED
+                  </span>
+                )}
                 <span className="h-px flex-1 bg-gradient-to-r from-white/15 to-transparent" />
                 <span className="flex items-center gap-2 font-mono text-[10px] tracking-[0.18em] text-gray-500">
                   <Box className="h-3.5 w-3.5" style={{ color: accent }} />
@@ -52,20 +58,42 @@ export const Projects: React.FC = () => {
                     accent={accent}
                     className="h-full"
                   >
-                    <article className="flex h-full min-h-[480px] flex-col">
-                      <div className="group/img relative mb-5 overflow-hidden border border-white/[0.07] bg-[#eef2f8]">
-                        <div className="aspect-[16/10] w-full">
-                          <img
-                            src={project.imageUrl}
-                            alt={project.title}
-                            loading="lazy"
-                            decoding="async"
-                            className="h-full w-full object-contain p-3 grayscale transition-all duration-700 group-hover/img:scale-105 group-hover/img:grayscale-0"
-                          />
-                        </div>
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#060810]/60 via-transparent to-transparent opacity-60" />
+                    <article
+                      className={`flex h-full flex-col ${
+                        group.confidential ? 'min-h-[540px]' : 'min-h-[480px]'
+                      }`}
+                    >
+                      <div className="group/img relative mb-5 overflow-hidden border border-white/[0.07]">
+                        {project.imageUrl ? (
+                          <div className="aspect-[16/10] w-full bg-[#eef2f8]">
+                            <img
+                              src={project.imageUrl}
+                              alt={project.title}
+                              loading="lazy"
+                              decoding="async"
+                              className="h-full w-full object-contain p-3 grayscale transition-all duration-700 group-hover/img:scale-105 group-hover/img:grayscale-0"
+                            />
+                          </div>
+                        ) : (
+                          <div className="relative flex aspect-[16/10] w-full flex-col items-center justify-center gap-3 overflow-hidden bg-[#070a12]">
+                            <div className="pointer-events-none absolute inset-0 cyber-grid opacity-30" />
+                            <span className="pointer-events-none absolute inset-4 border border-dashed border-white/[0.08]" />
+                            <ShieldCheck
+                              className="relative h-8 w-8"
+                              style={{ color: accent }}
+                              strokeWidth={1.2}
+                            />
+                            <span className="relative font-mono text-[10px] tracking-[0.24em] text-gray-400">
+                              IDENTITY CLASSIFIED
+                            </span>
+                            <span className="relative font-mono text-[8px] tracking-[0.18em] text-gray-600">
+                              CLIENT / LOGO REDACTED
+                            </span>
+                          </div>
+                        )}
+                        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#060810]/60 via-transparent to-transparent opacity-60" />
                         <span className="absolute right-2 top-2 border border-white/20 bg-black/70 px-2 py-0.5 font-mono text-[8px] tracking-[0.18em] text-white">
-                          {project.link ? 'LIVE' : 'INTERNAL'}
+                          {group.confidential ? 'CONFIDENTIAL' : project.link ? 'LIVE' : 'INTERNAL'}
                         </span>
                       </div>
 
@@ -76,6 +104,17 @@ export const Projects: React.FC = () => {
                       <p className="mt-3 line-clamp-4 font-rajdhani text-[15px] leading-relaxed text-gray-400">
                         {project.description}
                       </p>
+
+                      {project.contribution && (
+                        <div className="mt-4 border-l-2 pl-3" style={{ borderColor: `${accent}88` }}>
+                          <p className="font-mono text-[9px] tracking-[0.2em]" style={{ color: accent }}>
+                            MY CONTRIBUTION
+                          </p>
+                          <p className="mt-1.5 font-rajdhani text-sm leading-relaxed text-gray-300">
+                            {project.contribution}
+                          </p>
+                        </div>
+                      )}
 
                       <div className="mt-auto pt-5">
                         <div className="flex flex-wrap gap-1.5">
@@ -90,7 +129,12 @@ export const Projects: React.FC = () => {
                         </div>
 
                         <div className="mt-4 border-t border-white/[0.08] pt-4">
-                          {project.link ? (
+                          {group.confidential ? (
+                            <span className="inline-flex items-center gap-2 font-mono text-[10px] tracking-[0.18em] text-gray-600">
+                              <Lock className="h-3.5 w-3.5" />
+                              CLIENT DETAILS WITHHELD
+                            </span>
+                          ) : project.link ? (
                             <a
                               href={project.link}
                               target="_blank"

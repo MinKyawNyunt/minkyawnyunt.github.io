@@ -3,13 +3,19 @@ export interface Project {
   id: string;
   title: string;
   description: string;
+  /** What the developer personally did on the project. */
+  contribution?: string;
   tags: string[];
-  imageUrl: string;
+  /** Omitted for confidential client work so no logo is displayed. */
+  imageUrl?: string;
   link: string;
 }
 
 export interface ProjectGroup {
+  /** Public-facing label. Confidential groups use a sector label, not the real client name. */
   companyName: string;
+  /** Hides client identity, logo and public links for the whole group. */
+  confidential?: boolean;
   projects: Project[];
 }
 

@@ -1,13 +1,6 @@
 
 import React from 'react';
 import { Project, ProjectGroup, Skill, Experience, Education } from './types';
-import fdaImage from './assets/images/optimized/fda.webp';
-import mohtImage from './assets/images/optimized/moht.webp';
-import ucsbImage from './assets/images/optimized/ucsb.webp';
-import moaliImg from './assets/images/optimized/moali.webp';
-import disiImg from './assets/images/optimized/disi.webp';
-import hanaImg from './assets/images/optimized/hana.webp';
-import sayaImg from './assets/images/optimized/saya.webp';
 import grandeWhiskyImg from './assets/images/optimized/grande-whisky.webp';
 import boaImg from './assets/images/optimized/boa_logo.webp';
 import roseHillImg from './assets/images/optimized/rose-hill.webp';
@@ -27,78 +20,81 @@ export const BIO_SUMMARY = `I engineer mission-critical software in a high-stake
 
 export const PROJECT_GROUPS: ProjectGroup[] = [
   {
-    companyName: 'Secure Link Co., Ltd',
+    companyName: 'SECURELINK CO,. LTD',
+    confidential: false,
     projects: [
       {
         id: '1',
-        title: 'E-Submission System For FDA Myanmar',
-        description: 'Modernized the FDA application process in Myanmar, significantly improving accessibility, efficiency, and security for citizens and government authorities.',
+        title: 'National E-Submission Platform',
+        description: 'Modernized a nationwide application and approval process, improving accessibility, efficiency, and security for citizens and regulatory authorities.',
+        contribution: 'Led full-stack development of the multi-step submission, review, and approval workflow, including role-based administration, secure document handling, and on-premise deployment.',
         tags: ['Laravel', 'React', 'MySQL', 'On-Premise Server'],
-        imageUrl: fdaImage,
-        link: 'https://www.fda.gov.mm/'
+        link: ''
       },
       {
         id: '2',
-        title: 'Electronic Document Management System For Ministry of Hotels and Tourism',
-        description: 'In-house letter management system that streamlined and modernized letter workflows, significantly enhancing administrative efficiency and responsiveness',
+        title: 'Electronic Document Management System',
+        description: 'Digitized internal correspondence and approval workflows, replacing paper-based routing with a centralized document registry.',
+        contribution: 'Built the document registry, routing, tracking, and archival modules with role-based access control and full audit trails.',
         tags: ['Laravel', 'React', 'MariaDB', 'On-Premise Server'],
-        imageUrl: mohtImage,
         link: ''
       },
       {
         id: '3',
-        title: 'Online Examination System For Union Civil Service Board',
-        description: 'Built a nationwide online examination platform that transformed the Union Civil Service Board’s exam process, delivering a standardized, transparent, and accessible experience for government staff candidates across Myanmar.',
+        title: 'Nationwide Online Examination Platform',
+        description: 'Delivered a standardized, transparent, and accessible examination experience for government staff candidates across the country.',
+        contribution: 'Designed and built candidate registration, exam delivery, scoring, and result publishing, plus the accompanying mobile application.',
         tags: ['Laravel', 'React', 'API', 'Postgres', 'On-Premise Server'],
-        imageUrl: ucsbImage,
-        link: 'https://play.google.com/store/apps/details?id=com.erss.recruitment.ucsb&hl=en'
+        link: ''
       },
       {
         id: '4',
-        title: 'ERP System For Ministry Of Agriculture And Irrigation',
-        description: 'Developed a comprehensive ERP system for the Ministry of Agriculture and Irrigation, integrating administrative and operational functions through modules for project management, resource allocation, financial management, and reporting to ensure efficient coordination and oversight.',
+        title: 'Government ERP System',
+        description: 'Consolidated administrative and operational functions into a single ERP spanning project management, resource allocation, financial management, and reporting.',
+        contribution: 'Developed core ERP modules, database schemas, reporting pipelines, and on-premise deployment support for multi-department coordination.',
         tags: ['Laravel', 'JQuery', 'MySQL', 'On-Premise Server'],
-        imageUrl: moaliImg,
         link: ''
       },
       {
         id: '5',
-        title: 'ERP System For Directorate Of Industrial Supervision And Inspection',
-        description: 'Developed a comprehensive ERP system to enhance the management and oversight of industrial operations and inspections, featuring modules for inspection scheduling, compliance tracking, reporting, and centralized data management to streamline regulatory supervision.',
+        title: 'Regulatory Inspection ERP',
+        description: 'Built an ERP for industrial operations and inspections, covering scheduling, compliance tracking, centralized data management, and reporting.',
+        contribution: 'Implemented inspection scheduling, compliance-tracking workflows, and reporting dashboards for regulatory oversight teams.',
         tags: ['Laravel', 'JQuery', 'MySQL', 'On-Premise Server'],
-        imageUrl: disiImg,
-        link: 'https://disi.gov.mm/'
+        link: ''
       }
     ]
   },
   {
-    companyName: 'Hana Microfinance',
+    companyName: 'HANA MICROFINANCE',
+    confidential: true,
     projects: [
       {
         id: '6',
-        title: 'Hana Microfinance In-House ERP',
-        description: 'Designed and developed an in-house ERP solution covering client information management, loan processing, savings management, and repayment tracking, supported by a dedicated client mobile app and a field application to streamline office staff operations.',
+        title: 'In-House Microfinance ERP',
+        description: 'Built an end-to-end ERP for client information, loan processing, savings management, and repayment tracking, supported by a client mobile app and a field-staff application.',
+        contribution: 'Owned system architecture and full-stack delivery across the web ERP, client mobile app, and field application, including Dockerized deployment on AWS for a 300k+ user base.',
         tags: ['Laravel', 'React', 'React Native', 'MySQL', 'Docker', 'AWS'],
-        imageUrl: hanaImg,
-        link: 'https://hanamyanmar.com/'
+        link: ''
       }
     ]
   },
   {
-    companyName: 'Saya Foundation',
+    companyName: 'SYNERGY SOLUTIONS',
+    confidential: true,
     projects: [
       {
         id: '7',
-        title: 'Automation for Saya Foundation',
-        description: 'Automated Zoom class recordings and student attendance tracking, seamlessly syncing data to Google Drive through a custom solution leveraging Google Apps Script and AWS Lambda.',
+        title: 'Education Automation Platform',
+        description: 'Automated class recordings and student attendance tracking, syncing data to cloud storage for a non-profit education program.',
+        contribution: 'Built the automation pipeline with Google Apps Script and AWS Lambda, integrating the Zoom API with Google Drive.',
         tags: ['Lambda', 'AppScript', 'ES6', 'Google Drive', 'Zoom API'],
-        imageUrl: sayaImg,
-        link: 'https://saya-foundation.org/'
+        link: ''
       }
     ]
   },
   {
-    companyName: 'Freelance',
+    companyName: 'OTHERS',
     projects: [
       {
         id: '8',
